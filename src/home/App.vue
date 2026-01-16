@@ -18,7 +18,8 @@ const sendAlert = msg=>{
 
 const links = [ 
   { link: "https://clickshot-site.netlify.app/", text: "Website",  icon: "mdi-link"},
-  {link: "https://forms.gle/VPrYQRz9StnmV6F78", text: "Bugs/Feedback", icon: "mdi-bug"}
+  {link: "https://forms.gle/VPrYQRz9StnmV6F78", text: "Bugs/Feedback", icon: "mdi-bug"},
+  {link: "https://github.com/Priyanshu-001/click-shot", text: "Github", icon: "mdi-github"}
 
 
 ]
@@ -152,20 +153,19 @@ const handleBulkOp = async (operation, selected)=>{
           closable
           >
       <v-alert-title>Don't forget to backup</v-alert-title>
-      Please backup to app like onenote/notion to read from multiple device and have better safety. Deleting of extension or any bug here  = deletion of notes
+      Please backup to app like onenote/notion to read from multiple device and have better safety. You will lose notes if extension is deleted, or any bug causes issues.
     </v-alert> 
        </v-row>
       <v-row>
         <big-list 
-        v-show="filteredNotes.size !== 0"
+        v-show="filteredNotes.length !== 0"
         :notes="filteredNotes" 
         :loading="loading"
         @show-card="moveRef" 
         @copy="()=>sendAlert('Note Copied sucessfully !!')"
         @bulk-op="handleBulkOp"
         />
-        
-      <no-notes-available v-if="notes.size === 0"/>
+      <no-notes-available v-if="notes.length === 0"/>
       
       </v-row>
       </v-container>
