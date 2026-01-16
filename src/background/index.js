@@ -13,6 +13,13 @@ chrome.commands.onCommand.addListener(async (command) => {
 });
 
 
+chrome.runtime.onInstalled.addListener((details) => {
+  if (details.reason === 'install') {
+    chrome.tabs.create({
+      url: 'https://clickshot-site.netlify.app/?atInstall=true'
+    })
+  }
+})
 
 
 chrome.runtime.onMessage.addListener(  (message, sender, sendResponse) => {
