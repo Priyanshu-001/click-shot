@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ClickShot</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        margin: 0;
+        padding: 16px;
+        width: 270px;
+        background: #212121; /* slate-900 */
+        color: white; /* gray-200 */
+      }
+
+      h1 {
+        font-size: 18px;
+        margin-bottom: 6px;
+        color: white;
+      }
+
+      p {
+        font-size: 13px;
+        margin: 10px 0 16px;
+        line-height: 1.5;
+        color: white;
+      }
+
+      .shortcut {
+        font-weight: 600;
+        background: #1e293b;
+        padding: 4px 6px;
+        border-radius: 6px;
+        color: #e5e7eb;
+      }
+
+      .action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 12px;
+        padding: 8px 0;
+        font-size: 13px;
+        color: #93c5fd;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .action span {
+        transition: transform 0.2s ease;
+      }
+
+      .action:hover .arrow {
+        transform: translateX(6px);
+      }
+
+      .action:hover {
+        color: #bfdbfe;
+      }
+
+      .underline-ltr {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-ltr::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.underline-ltr:hover::after {
+  transform: scaleX(1);
+}
+
+    </style>
+  </head>
+
+  <body>
+    <h1>ClickShot</h1>
+
+    <p>
+      Capture a video note using
+      <span class="shortcut" id="shortcut">CTRL + SHIFT + K</span>
+    </p>
+
+    <button id="open-shortcuts" class="action underline-ltr">
+      <span>Change extension shortcut</span>
+    </button>
+
+    <button id="open-settings" class="action underline-ltr">
+      <span> View All Notes. </span>
+    </button>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

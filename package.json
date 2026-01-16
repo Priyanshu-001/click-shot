@@ -1,0 +1,28 @@
+{
+  "name": "click-shot",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "dexie": "^4.2.1",
+    "vue": "^3.5.17",
+    "vue-router": "^4.6.4",
+    "vuetify": "^3.11.2"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.3",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/chrome": "^0.1.1",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.0.5",
+    "vite-plugin-zip-pack": "^1.2.4"
+  }
+}
