@@ -18,7 +18,7 @@ import { VHotkey, VIcon } from 'vuetify/components';
 
     <p class="subtitle">
       Capture new notes using
-      <v-hotkey keys="meta+shift+L"/>  
+      <v-hotkey keys="meta+shift+K"/>  
       on any video
     </p>
   </div>

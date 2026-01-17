@@ -13,13 +13,23 @@ chrome.commands.onCommand.addListener(async (command) => {
 });
 
 
-chrome.runtime.onInstalled.addListener((details) => {
-  if (details.reason === 'install') {
-    chrome.tabs.create({
-      url: 'https://clickshot-site.netlify.app/?atInstall=true'
-    })
-  }
-})
+ chrome.commands.getAll((commands) => {
+    const capture = commands.find(c => c.name === 'capture');
+    const hasConflict = !capture || !capture.shortcut;
+
+    const url = new URL('https://clickshot-site.netlify.app/');
+    url.searchParams.set('atInstall', 'true');
+    if (hasConflict) {
+      url.searchParams.set('shortcutConflict', 'true');
+      
+    }
+    chrome.tabs.create({ url: url.toString() });
+    if(hasConflict) {
+       chrome.tabs.create({
+      url: "chrome://extensions/shortcuts",
+    }) //Create this tab after the onboarding one
+    }
+  });
 
 
 chrome.runtime.onMessage.addListener(  (message, sender, sendResponse) => {

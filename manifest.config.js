@@ -29,7 +29,7 @@ export default defineManifest({
   commands: {
   "take-screenshot-note": {
     "suggested_key": {
-      "default": "Ctrl+Shift+L",
+      "default": "Ctrl+Shift+K",
     },
     "description": "Trigger screenshot capture"
     }

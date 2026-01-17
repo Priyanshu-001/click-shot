@@ -11,5 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.runtime.openOptionsPage()
   })
 
-  document.getElementById("shortcutKey").textContent = normalize("meta+shift+L")
+  document.getElementById("open-shortcuts").textContent = normalize("meta+shift+K")
 })
