@@ -13,12 +13,12 @@ import { VHotkey, VIcon } from 'vuetify/components';
     />
 
     <p class="title">
-      You don’t have any notes yet
+      You do not have any notes yet
     </p>
 
     <p class="subtitle">
       Capture new notes using
-      <v-hotkey keys="meta+shift+k"/>  
+      <v-hotkey keys="meta+shift+L"/>  
       on any video
     </p>
   </div>

@@ -29,18 +29,14 @@ export default defineManifest({
   commands: {
   "take-screenshot-note": {
     "suggested_key": {
-      "default": "Ctrl+Shift+K",
+      "default": "Ctrl+Shift+L",
     },
     "description": "Trigger screenshot capture"
     }
   },
   permissions: [
-    'sidePanel',
     'contentSettings',
   ],
-  side_panel: {
-    default_path: 'src/sidepanel/index.html',
-  },
   options_page: "src/home/index.html"
 
 })

@@ -19,9 +19,6 @@ const sendAlert = msg=>{
 const links = [ 
   { link: "https://clickshot-site.netlify.app/", text: "Website",  icon: "mdi-link"},
   {link: "https://forms.gle/VPrYQRz9StnmV6F78", text: "Bugs/Feedback", icon: "mdi-bug"},
-  {link: "https://github.com/Priyanshu-001/click-shot", text: "Github", icon: "mdi-github"}
-
-
 ]
 const {copyNote, copyNotesBulk } = useClipBoard()
 const copy = note=>{
