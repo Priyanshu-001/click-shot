@@ -16,6 +16,7 @@ function normalizeAKey(isMac) {
       case 'meta':
       case 'cmd':
       case 'command':
+      case 'ctrl':  
         return '⌘'
 
       case 'option':

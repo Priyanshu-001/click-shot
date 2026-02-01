@@ -35,7 +35,8 @@ export default defineManifest({
     }
   },
   permissions: [
-    'contentSettings',
+    "activeTab",
+    "commands"
   ],
   options_page: "src/home/index.html"
 

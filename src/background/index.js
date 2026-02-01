@@ -12,9 +12,9 @@ chrome.commands.onCommand.addListener(async (command) => {
   }
 });
 
-
+chrome.runtime.onInstalled.addListener(() => {
  chrome.commands.getAll((commands) => {
-    const capture = commands.find(c => c.name === 'capture');
+    const capture = commands.find(c => c.name === 'take-screenshot-note');
     const hasConflict = !capture || !capture.shortcut;
 
     const url = new URL('https://clickshot-site.netlify.app/');
@@ -30,6 +30,8 @@ chrome.commands.onCommand.addListener(async (command) => {
     }) //Create this tab after the onboarding one
     }
   });
+})
+
 
 
 chrome.runtime.onMessage.addListener(  (message, sender, sendResponse) => {
