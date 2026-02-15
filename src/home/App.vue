@@ -167,26 +167,21 @@ const handleBulkOp = async (operation, selected)=>{
       </v-row>
       </v-container>
     </v-main>
- <v-footer class="d-flex align-center justify-center ga-2 flex-wrap flex-grow-1 py-3" color="surface-light">
-
-  
-
-
-   
+ <v-footer class="d-flex align-center justify-center ga-2 flex-wrap flex-grow-1 py-3" border rounded color="dark">
          <v-btn 
-      v-for="link in links"
-      :href="link.link"
-      
-      :key="link.link"
-      :text="link.text"
-      :prepend-icon="link.icon"
-      variant="text"
-      rounded
-    ></v-btn>
+          v-for="link in links"
+          :href="link.link"
+          
+          :key="link.link"
+          :text="link.text"
+          :prepend-icon="link.icon"
+          variant="text"
+          rounded
+          ></v-btn>
 
-     <div class="flex-1-0-100 text-center mt-2">
-     ClickShot <strong>V0.9.1</strong>
-    </div>
+        <div class="flex-1-0-100 text-center mt-2">
+        ClickShot <strong>V0.9.3</strong>
+        </div>
  
 </v-footer>
 

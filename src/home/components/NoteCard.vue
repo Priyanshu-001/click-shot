@@ -28,7 +28,7 @@ const tags = []
 const props = defineProps(["index", "totalIndex", "note"])
 const emit = defineEmits(["move", "close", "edit", "delete"])
 const prev = ()=>{ props.index > 0 && emit("move", props.index-1)}
-const next = ()=>{ props.index <= (props.totalIndex || 1) -1 && emit("move", props.index+1)}
+const next = ()=>{ props.index < (props.totalIndex || 1) -1 && emit("move", props.index+1)}
 const operationInProgress = ref(null)
 const {copyNote} = useCliplboard()
 
@@ -74,6 +74,10 @@ setTimeout(()=>copySuccess.value = false, 1000)
 const [safetriggerSave, safeCancelEdit] = [triggerSave, cancelEdit].map(fn=>transformToRepectingLock(fn, operations.EDIT_NOTE))
 const [safePrev, safeNext, safeTriggerDelete, safeOpenNoteTarget, safeStartEdit, safeCopyNote] = [prev, next, triggerDelete, openNoteTarget, startEdit, copyContent].map(fn=>transformToRepectingLock(fn, null))  
 
+const editKeyCode = "meta+shift+E"
+const deleteKeyCode = "meta+shift+X"
+const openNoteKeyCode = "meta+shift+O"
+const copyNoteKeyCode = "meta+C"
 
 useHotkey("arrowup", safeNext)
 useHotkey("arrowright", safeNext)
@@ -81,10 +85,10 @@ useHotkey("arrowleft", safePrev)
 useHotkey("arrowdown", safePrev)
 useHotkey("meta+enter", safetriggerSave, {"inputs": true})
 useHotkey("esc", safeCancelEdit, {"inputs": true, preventDefault:true})
-useHotkey("alt+E", safeStartEdit)
-useHotkey("alt+D", safeTriggerDelete)
-useHotkey("alt+P", ()=>safeOpenNoteTarget(props.note))
-useHotkey("meta+C", copyContent)
+useHotkey(editKeyCode, safeStartEdit)
+useHotkey(deleteKeyCode, safeTriggerDelete)
+useHotkey(openNoteKeyCode, ()=>safeOpenNoteTarget(props.note))
+useHotkey(copyNoteKeyCode, copyContent)
 
 
 watch(
@@ -151,7 +155,7 @@ watch(operationInProgress, function operationChangeHandler(newVal, oldVal) {
               block
             >
             <btn-text :text="note?.timestampUrl ? `At Timestamp  ${formatDuration(note.currentTime)}` : 'Open Video'"
-            key-code="alt+P"
+            :key-code="openNoteKeyCode"
             />
              
             </v-btn>
@@ -164,7 +168,7 @@ watch(operationInProgress, function operationChangeHandler(newVal, oldVal) {
               block
             >
                <btn-text text="delete"
-                  key-code="alt+D"
+                :key-code="deleteKeyCode"
                 />
             </v-btn>
 
@@ -177,7 +181,7 @@ watch(operationInProgress, function operationChangeHandler(newVal, oldVal) {
               block
             >
              <btn-text text="EDIT"
-                  key-code="alt+E"
+                  :key-code="editKeyCode"
                 />
             </v-btn>
 
@@ -191,7 +195,7 @@ watch(operationInProgress, function operationChangeHandler(newVal, oldVal) {
             >
            
             <btn-text :text="copySuccess ? 'Note Copied' : 'Copy note'"
-                  key-code="meta+C"
+                  :key-code="copyNoteKeyCode"
                 />
             </v-btn>
           </v-col>

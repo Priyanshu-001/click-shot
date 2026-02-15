@@ -1,6 +1,6 @@
 <script setup>
 import { computed,ref, watch } from 'vue';
-import { VCard, VCol, VTextField, VRow, VAutocomplete,VBtn, VContainer } from 'vuetify/components';
+import {  VCol, VRow, VAutocomplete, VContainer } from 'vuetify/components';
 
 const props = defineProps(['idToTitle', "sites", "loading"])
   const emit = defineEmits(['filterUpdate'])
