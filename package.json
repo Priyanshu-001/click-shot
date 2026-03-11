@@ -1,7 +1,8 @@
 {
-  "name": "click-shot",
+  "name": "ClickShot - Easy note-taking for lectures",
+  "description": "Take notes while watching your lectures with a single hotkey.",
   "type": "module",
-  "version": "0.9.3",
+  "version": "0.9.3.1",
   "private": true,
   "scripts": {
     "dev": "vite",
