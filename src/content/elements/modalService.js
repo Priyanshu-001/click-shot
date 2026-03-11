@@ -117,7 +117,14 @@ button {
   padding: 6px 14px;
   border-radius: 4px;
   cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
+
+button:hover, img:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
 
 button.primary {
   background: #2563eb;
