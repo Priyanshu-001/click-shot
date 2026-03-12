@@ -180,7 +180,7 @@ const handleBulkOp = async (operation, selected)=>{
           ></v-btn>
 
         <div class="flex-1-0-100 text-center mt-2">
-        ClickShot <strong>V0.9.3</strong>
+        ClickShot <strong>V0.9.3.1</strong>
         </div>
  
 </v-footer>
