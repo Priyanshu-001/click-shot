@@ -6,7 +6,6 @@ export default function useClipboard() {
     const title = note?.video?.title ?? ''
     const videoLink = note?.video?.url
     const timestampLink = note?.timestampUrl
-    debugger;
     const description = note?.description ?? ''
     const time = note?.currentTime
     const dataUrl = note?.dataUrl
@@ -44,11 +43,13 @@ ${description?.replace(/\n/g, '<br/>')}
       .map(p => p.htmlText)
       .join('<hr style="margin:16px 0;" />')
 
-    await navigator.clipboard.write([
-      new ClipboardItem({
+    const clipboardData = {
         'text/plain': new Blob([plainText], { type: 'text/plain' }),
         'text/html': new Blob([htmlText], { type: 'text/html' })
-      })
+    }
+
+    await navigator.clipboard.write([
+      new ClipboardItem(clipboardData)
     ])
   }
 

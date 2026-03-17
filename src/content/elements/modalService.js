@@ -117,7 +117,14 @@ button {
   padding: 6px 14px;
   border-radius: 4px;
   cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
+
+button:hover, img:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
 
 button.primary {
   background: #2563eb;
@@ -248,7 +255,7 @@ const state = {
 const handleTextareaKeydown = async e => {
       console.debug("Keydown event in textarea:", e);
        const isSubmitShortcut = (e.ctrlKey || e.metaKey) && e.key === "Enter";
-       const isDeleteShortcut = e.altKey && e.key.toLowerCase() === 'd';
+       const isDeleteShortcut =(e.ctrlKey || e.metaKey)  && e.key?.toUpperCase() === 'X' && e.shiftKey;
        const isJustSaveScreenShot = (e.key === 'Escape')
       
         if (isSubmitShortcut) {
@@ -314,7 +321,7 @@ function removeModalKeyDownListener(key) {
 }
 
 
-function showModal({videoTitle, noteId, screenshotSrc, timestamp, timestampLink}) {
+function showModal({videoTitle, screenshotSrc, timestampLink}) {
     // console.debug("Showing modal with data:", {videoTitle, noteId, screenshotSrc, timestamp, timestampLink});
     state.isShown = true;
     state.modalRoot.querySelector('#videoTitle').textContent = videoTitle;
@@ -329,7 +336,7 @@ function showModal({videoTitle, noteId, screenshotSrc, timestamp, timestampLink}
     }
     
     state.modalRoot.querySelector('#saveBtnText').textContent = normalize("ctrl+Enter");
-    state.modalRoot.querySelector('#discardBtnText').textContent = normalize("alt+D");
+    state.modalRoot.querySelector('#discardBtnText').textContent = normalize("ctrl+shift+X");
 
     state.modalRoot.querySelector('.overlay').classList.add('open');
     state.lastFocusedElement = document.activeElement;

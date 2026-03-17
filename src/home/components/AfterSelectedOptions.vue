@@ -15,11 +15,12 @@ const {selectedNotes, loading} = defineProps({
 })
 
 const emit = defineEmits(['copy'])
+const copyNotesKeyCode = "meta+shift+c"
 
 const count = computed(() => selectedNotes.size)
 const visible = computed(() => count.value > 0)
 
-useHotkey("shift+alt+c", ()=>emit("copy"), {inputs: true} )
+useHotkey(copyNotesKeyCode, ()=>emit("copy"), {inputs: true} )
 
 </script>
 
@@ -47,7 +48,7 @@ useHotkey("shift+alt+c", ()=>emit("copy"), {inputs: true} )
         class="px-3"
         
     >
-        <btn-text key-code="shift+alt+c"  text="Copy"/>
+        <btn-text :key-code="copyNotesKeyCode"  text="Copy"/>
       </v-btn>
     </v-sheet>
 </template>

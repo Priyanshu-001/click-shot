@@ -12,7 +12,8 @@ chrome.commands.onCommand.addListener(async (command) => {
   }
 });
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener(details => {
+ if (details.reason !== "install") return;
  chrome.commands.getAll((commands) => {
     const capture = commands.find(c => c.name === 'take-screenshot-note');
     const hasConflict = !capture || !capture.shortcut;
@@ -63,9 +64,8 @@ async function captureHanlder(message) {
   try {
     const res = await createNote(message);
     return {success: true, ...res};
-  } catch(error) {
+  } catch(err) {
     console.error(err)
-    console.log(err)
     return {success: false}
   }
 }
@@ -86,7 +86,7 @@ async function searchNotesHandler(message) {
   const notes = await searchNotes(message.query)
   return {success: true,notes}
   } catch (err) {
-    console.error(error)
+    console.error(err)
     return {success: false}
   }
 }
